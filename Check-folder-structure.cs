@@ -9,20 +9,20 @@ public void Main()
             MessageBox.Show("Financial year:" + financialYear);
 
             string outputFilesFolderPath = Path.Combine(initialFolderPath, "FY" + financialYear, "Output Files", "FD");
-            string masterFilesFolderPath = Path.Combine(initialFolderPath, "FY" + financialYear, "Master Files");
+            string masterFilesFolderPath = Path.Combine(initialFolderPath, "FY" + financialYear, "Output Files", "FD", "Master Files");
             MessageBox.Show("outputFilesFolderPath =" + outputFilesFolderPath);
             MessageBox.Show(" masterFilesFolderPathh =" + masterFilesFolderPath);
 
             // Check and create the "Output Files\FD" folder structure
-            CreateFolderStructure(outputFilesFolderPath, "Output Files\\FD");
+            CreateFolderStructure(outputFilesFolderPath);
 
             // Check and create the "Master Files" folder structure
-            CreateFolderStructure(masterFilesFolderPath, "Master Files");
+            CreateFolderStructure(masterFilesFolderPath);
 
             Dts.TaskResult = (int)ScriptResults.Success;
         }
 
-        private void CreateFolderStructure(string folderPath, string folderName)
+        private void CreateFolderStructure(string folderPath)
         {
             bool fireAgain = true;
 
