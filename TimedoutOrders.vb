@@ -1,3 +1,18 @@
+Function ConnectionString(env)
+    ' Function sets a connection string based on chosen environment passed as argument
+    If LCase(env) = "prod" then
+        ConnectionString=   "Provider=MSOLEDBSQL;Server=" & ProdSQLServerName & ";" & _
+		    			    "Integrated Security=SSPI;Database=" & ProdDatabaseName & ";" & _
+		    				"DataTypeCompatibility=80;MultiSubnetFailover=True"
+    Elseif LCase(env) = "test" then
+        ConnectionString=   "Provider=MSOLEDBSQL;Server=" & TestSQLServerName & ";" & _
+		    			    "Integrated Security=SSPI;Database=" & TestDatabaseName & ";" & _
+		    				"DataTypeCompatibility=80;MultiSubnetFailover=True"
+    Else
+        ConnectionString = False 
+    End If
+End Function
+
 ' Add order to timed out orders table
 Function InsertTimedoutOrder(ordnum)
     On Error Resume Next
